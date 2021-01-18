@@ -15,22 +15,31 @@ $(document).ready(function() {
     var runningScore = 0
 
     // CREATE A START QUIZ FUNCTION
-        // var btn1 = document.createElement("BUTTON");
-        // var btn2 = document.createElement("BUTTON");
-        // var btn3 = document.createElement("BUTTON");
-        // var btn4 = document.createElement("BUTTON");
-        // btn1.setAttribute("class", "btn btn-danger btn-choice");
-        // btn2.setAttribute("class", "btn btn-danger btn-choice");
-        // btn3.setAttribute("class", "btn btn-danger btn-choice");
-        // btn4.setAttribute("class", "btn btn-danger btn-choice");
-        // btn1.setAttribute("value", 1);
-        // btn2.setAttribute("value", 2);
-        // btn3.setAttribute("value", 3);
-        // btn4.setAttribute("value", 4);
-        // document.getElementById("answer-buttons").appendChild(btn1);
-        // document.getElementById("answer-buttons").appendChild(btn2);
-        // document.getElementById("answer-buttons").appendChild(btn3);
-        // document.getElementById("answer-buttons").appendChild(btn4);
+        function startQuiz(){
+            var startButton = document.getElementById("button-1");
+            startButton.remove();
+            var btn1 = document.createElement("BUTTON");
+            var btn2 = document.createElement("BUTTON");
+            var btn3 = document.createElement("BUTTON");
+            var btn4 = document.createElement("BUTTON");
+            btn1.setAttribute("class", "btn btn-danger btn-choice");
+            btn2.setAttribute("class", "btn btn-danger btn-choice");
+            btn3.setAttribute("class", "btn btn-danger btn-choice");
+            btn4.setAttribute("class", "btn btn-danger btn-choice");
+            btn1.setAttribute("value", 1);
+            btn2.setAttribute("value", 2);
+            btn3.setAttribute("value", 3);
+            btn4.setAttribute("value", 4);
+            document.getElementById("answer-buttons").appendChild(btn1);
+            document.getElementById("answer-buttons").appendChild(btn2);
+            document.getElementById("answer-buttons").appendChild(btn3);
+            document.getElementById("answer-buttons").appendChild(btn4);
+        }
+
+    // 
+    $(".btn-start").on("click", function(){
+        startQuiz()
+    })
 
     // function to move to the next question
     function nextquestion(){
