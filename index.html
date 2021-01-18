@@ -1,11 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>Number Checker</title>
+
+  <!-- Added link to the jQuery Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- Added a link to Bootstrap-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
 </head>
+
 <body>
-    
+
+  <div>
+    <h1 class="text-center">JavaScript Quiz</h1>
+    <h2 class="text-center">How well do you know basic JS?</h2>
+  </div>
+
+  <div class="container">
+
+    <div class="card mt-1">
+      <div class="card-header">
+        <div class="card-body text-center">
+          <h3 class="question-number">Question placeholder</h3>
+          <h1 id="quiz-question">???</h1>
+        </div>
+      </div>
+
+      <div class="card mt-1">
+        <div class="card-header">
+          <div class="card-body text-center">
+            <h3 class="card-title" id="answer-buttons">You Pick</h3>
+            <button id="button-1" class="btn btn-danger btn-choice" value="1">
+              <h1></h1>
+            </button>
+            <button id="button-2" class="btn btn-danger btn-choice" value="2">
+              <h1></h1>
+            </button>
+            <button id="button-3" class="btn btn-danger btn-choice" value="3">
+              <h1></h1>
+            </button>
+            <button id="button-4" class="btn btn-danger btn-choice" value="4">
+              <h1></h1>
+            </button>
+          </div>
+        </div>
+
+        <div class="card mt-1">
+          <div class="card-header">
+            <div class="card-body text-center">
+              <h3 class="card-title">Result</h3>
+              <h1 id="score">0</h1>
+            </div>
+          </div>
+
+        </div>
+
+    <script src="./script.js"></script>
+
 </body>
+
 </html>
