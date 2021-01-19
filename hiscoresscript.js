@@ -5,7 +5,7 @@ $(document).ready(function() {
     // if there are hiscores in the localstorage 
     if (oldscores!==null){
         for (i=0;i<oldscores.length;i++){
-            var newPlayerScore = document.createElement("p");
+            var newPlayerScore = document.createElement("h4");
             var arrayPop = oldscores[i]
             console.log(arrayPop)
             newPlayerScore.textContent = "User: " + arrayPop.initials + " Quiz Score: " + arrayPop.score
@@ -13,7 +13,8 @@ $(document).ready(function() {
         }
     }
     else {
-        var newPlayerScore = document.createElement("p");
-        newPlayerScore.textContent = "There are no local hiscores scored."
+        var noScores = document.createElement("h4");
+        noScores.textContent = "There are no local hiscores scored."
+        scoreList.appendChild(noScores)
     }
 })
