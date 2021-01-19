@@ -94,6 +94,7 @@ $(document).ready(function() {
         tryAgain.textContent = "Try Again"
 
         timer.textContent = 'Quiz Over';
+        $(".question-number").text("Score: "+ runningScore +"/"+questionBank.length)
 
         // display new question
         $("#quiz-question").text("Enter your initials for the hiscores")
