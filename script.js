@@ -38,8 +38,24 @@ $(document).ready(function() {
     // creates global countdown seconds variable
     var timeLeft = 60;
 
+    // create object that holds hiscores initials and score
+    var hiscores = []
+    // create a new variable based off of the local storage hiscores history
+    var oldscores = JSON.parse(localStorage.getItem("hiscores"))
+    console.log(oldscores)
+
+    // if there are hiscores in the localstorage, push each object of the localstorage hiscores array into the global hiscores array
+    if (oldscores!==null){
+        for (i=0;i<oldscores.length;i++){
+            hiscores.push(oldscores[i])  
+        }
+        console.log(hiscores)
+    }
+    else console.log("hiscores undefined")
+    
+
 //Start, next questions, and end functions
-    function removeStart(){
+    function pressStart(){
         // removes start button and hides start button div
         var startButton = document.getElementById("button-0")
         startButton.remove()
@@ -48,23 +64,70 @@ $(document).ready(function() {
         startDiv.remove()
 
         // reveals answer button panel
-        document.getElementById("choice-panel").style.visibility = "visible"
     }
 
     // create end function
     function endQuiz(){
-        var allButtons = document.getElementById("choice-panel")
-        var subText = document.getElementById("subText")
+        // var allButtons = document.getElementById("choice-panel")
+        // var subText = document.getElementById("subText")
+        // allButtons.remove()
+        // subText.remove()
+        document.getElementById("choice-panel").style.visibility = "hidden"
+        document.getElementById("subText").style.visibility = "hidden"
+
         var form = document.createElement("form"); 
         form.setAttribute("method", "post"); 
-        form.setAttribute("action", "submit.php"); 
-        timeLeft=0
+        form.setAttribute("id", "form");
+        form.setAttribute("onsubmit", "return false");
+
+        var formInput = document.createElement("INPUT");
+        formInput.setAttribute("type", "text");
+        formInput.setAttribute("id", "data")
+
+        var formButton = document.createElement("button")
+        formButton.setAttribute("value", "submit form");
+        formButton.setAttribute("class", "btn btn-success btn-submit");
+        formButton.textContent = "Submit"
+
+        var tryAgain = document.createElement("button")
+        tryAgain.setAttribute("class", "btn btn-success btn-start");
+        tryAgain.textContent = "Try Again"
+
         timer.textContent = 'Quiz Over';
 
-        allButtons.remove()
-        subText.remove()
-        // document.getElementById("quiz-question").appendChild(form);
-        $("#quiz-question").appendChild(form)  
+        // display new question
+        $("#quiz-question").text("Enter your initials for the hiscores")
+
+
+        document.getElementById("main-form").appendChild(form);
+        document.getElementById("form").appendChild(formInput);
+        document.getElementById("form").appendChild(formButton);
+        document.getElementById("main-form").appendChild(tryAgain);
+
+        // allows to submit hiscore form after submit button has been generated
+        $(document).ready(function() {
+            $(".btn-submit").on("click", function(event){
+                event.preventDefault();
+                // create object to be pushed into hiscores array
+                var user = {
+                    initials: formInput.value.trim(),
+                    score: runningScore
+                }
+
+                // push one time user score into hiscores array
+                JSON.parse(hiscores.push(user))
+                if (hiscores[0]==null){
+                    hiscores.shift();
+                }
+                // store the array to a local storage for hiscore page use
+                localStorage.setItem("hiscores",JSON.stringify(hiscores));
+
+            })
+            // reset game
+            $(".btn-start").on("click", function(){
+                window.location.reload()
+            })
+        })
     }
     // function to move to the next question
     function nextquestion(){
@@ -91,7 +154,7 @@ $(document).ready(function() {
         }
     }
 
-// Timer that counts down from 60
+// Timer that counts down from 60 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! THIS DOESNT WORK RIGHT!!!!!!!!!!!!!!!!!!!!
 function countdown() {
   
     // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
@@ -103,11 +166,9 @@ function countdown() {
         // Decrement `timeLeft` by 1
         timeLeft--
       } else {
-        endQuiz()
         // Use `clearInterval()` to stop the timer
         clearInterval(timeInterval)
-        // Call the `displayMessage()` function
-        displayMessage()
+        endQuiz()
       }
     }, 1000);
   }
@@ -117,7 +178,7 @@ function countdown() {
 
     // Begins the actual quiz when clicking the start button
     $(".btn-start").on("click", function(){
-        removeStart()
+        pressStart()
         $(".question-number").text("Question "+ quesLen)
         $("#quiz-question").text(questionBank[len])
         // update button text with array[0] from four answer arrays
@@ -125,6 +186,8 @@ function countdown() {
         btn2.textContent = button2Choice[len]
         btn3.textContent = button3Choice[len]
         btn4.textContent = button4Choice[len]
+        document.getElementById("choice-panel").style.visibility = "visible"
+        document.getElementById("subText").style.visibility = "visible"
         countdown()
     })
 
@@ -149,4 +212,5 @@ function countdown() {
       }
 
     })
+
   })
