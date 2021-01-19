@@ -1,6 +1,5 @@
 $(document).ready(function() {
     var oldscores = JSON.parse(localStorage.getItem("hiscores"))
-    console.log(oldscores.initials)
     var scoreList = document.getElementById("hiscores-list");
     // if there are hiscores in the localstorage 
     if (oldscores!==null){
