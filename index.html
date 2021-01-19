@@ -25,26 +25,46 @@
     <div class="card mt-1">
       <div class="card-header">
         <div class="card-body text-center">
-          <h3 class="question-number">Question placeholder</h3>
-          <h1 id="quiz-question">???</h1>
+          <h3 class="question-number">Press the start button to begin the quiz</h3>
+          <h3 id="quiz-question"></h3>
         </div>
       </div>
 
       <div class="card mt-1">
-        <div class="card-header">
-          <div class="card-body text-center" id="answer-buttons">
-            <button id="button-1" class="btn btn-danger btn-start">
+        <div class="card-header" id="start-button">
+          <div class="card-body text-center">
+            <button id="button-0" class="btn btn-success btn-start">
               <h1>Start Quiz</h1>
             </button>
           </div>
         </div>
 
         <div class="card mt-1">
-          <div class="card-header">
+          <div id="main-panel"class="card-header">
+            <div id="choice-panel" class="card-body text-center" style="visibility: hidden;">
+              <button id="button-1" class="btn btn-success btn-choice" value="1">
+                <p></p>
+              </button>
+              <button id="button-2" class="btn btn-success btn-choice" value="2">
+                <p></p>
+              </button>
+              <button id="button-3" class="btn btn-success btn-choice" value="3">
+                <p></p>
+              </button>
+              <button id="button-4" class="btn btn-success btn-choice" value="4">
+                <p></p>
+              </button>
+            </div>
             <div class="card-body text-center">
+              <h3 class="card-title">Time Left (Seconds)</h3>
+              <h1 id="timer">60</h1>
+              <h1 id="subText">(Wrong answers will deduct 5 seconds)</h1>
+            </div>
+            <!-- code to display result score -->
+            <!-- <div class="card-body text-center">
               <h3 class="card-title">Result</h3>
               <h1 id="score">0</h1>
-            </div>
+            </div> -->
           </div>
 
         </div>
