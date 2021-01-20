@@ -44,6 +44,9 @@ $(document).ready(function() {
     var oldscores = JSON.parse(localStorage.getItem("hiscores"))
     console.log(oldscores)
 
+    // create a variable that holds the time interval for the countdown so i can stop it outside of the countdown function
+    var timeInterval = null
+
     // if there are hiscores in the localstorage, push each object of the localstorage hiscores array into the global hiscores array
     if (oldscores!==null){
         for (i=0;i<oldscores.length;i++){
@@ -72,6 +75,7 @@ $(document).ready(function() {
         // var subText = document.getElementById("subText")
         // allButtons.remove()
         // subText.remove()
+        clearInterval(timeInterval)
         document.getElementById("choice-panel").style.visibility = "hidden"
         document.getElementById("subText").style.visibility = "hidden"
 
@@ -159,7 +163,7 @@ $(document).ready(function() {
 function countdown() {
   
     // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
-    var timeInterval = setInterval(function () {
+    timeInterval = setInterval(function () {
       // As long as the `timeLeft` is greater than 1
       if (timeLeft > 0) {
         // Set the `textContent` of `timer` to show the remaining seconds

@@ -17,3 +17,4 @@ $(document).ready(function() {
         scoreList.appendChild(noScores)
     }
 })
+// possibly figure out how to sort the hiscores
