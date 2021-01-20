@@ -109,29 +109,26 @@ $(document).ready(function() {
         document.getElementById("form").appendChild(formButton);
         document.getElementById("main-form").appendChild(tryAgain);
 
-        // allows to submit hiscore form after submit button has been generated
-        $(document).ready(function() {
-            $(".btn-submit").on("click", function(event){
-                event.preventDefault();
-                // create object to be pushed into hiscores array
-                var user = {
-                    initials: formInput.value.trim(),
-                    score: runningScore
-                }
+        $(".btn-submit").on("click", function(event){
+            event.preventDefault();
+            // create object to be pushed into hiscores array
+            var user = {
+                initials: formInput.value.trim(),
+                score: runningScore
+            }
 
-                // push one time user score into hiscores array
-                JSON.parse(hiscores.push(user))
-                if (hiscores[0]==null){
-                    hiscores.shift();
-                }
-                // store the array to a local storage for hiscore page use
-                localStorage.setItem("hiscores",JSON.stringify(hiscores));
+            // push one time user score into hiscores array
+            JSON.parse(hiscores.push(user))
+            if (hiscores[0]==null){
+                hiscores.shift();
+            }
+            // store the array to a local storage for hiscore page use
+            localStorage.setItem("hiscores",JSON.stringify(hiscores));
 
-            })
-            // reset game
-            $(".btn-start").on("click", function(){
-                window.location.reload()
-            })
+        })
+        // reset game
+        $(".btn-start").on("click", function(){
+            window.location.reload()
         })
     }
     // function to move to the next question
